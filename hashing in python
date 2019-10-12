@@ -1,0 +1,69 @@
+
+
+Hashing Algorithm In Python Language
+
+Hashing is an important Data Structure which is designed to use a special function called the Hash function which is used to map a given value with a particular key for faster access of elements.
+The efficiency of mapping depends of the efficiency of the hash function used.
+
+Hashing Questions,
+Index Mapping (or Trivial Hashing) with negatives allowed
+
+Given a limited range array contains both positive and non-positive numbers, i.e., elements are in the range from -MAX to +MAX.
+Our task is to search if some number is present in the array or not in O(1) time.
+
+Since range is limited, we can use index mapping (or trivial hashing). We use values as the index in a big array.
+Therefore we can search and insert elements in O(1) time.
+
+# Python3 program to implement direct index  
+# mapping with negative values allowed. 
+  
+# Searching if X is Present in the  
+# given array or not. 
+def search(X): 
+  
+    if X >= 0: 
+        if has[X][0] == 1: 
+            return True
+        else: 
+            return False
+  
+    # if X is negative take the absolute 
+    # value of X. 
+    X = abs(X) 
+    if has[X][1] == 1: 
+        return True
+  
+    return False
+  
+def insert(a, n): 
+  
+    for i in range(0, n): 
+        if a[i] >= 0: 
+            has[a[i]][0] = 1
+        else: 
+            has[abs(a[i])][1] = 1
+  
+# Driver code 
+if __name__ == "__main__": 
+  
+    a = [-1, 9, -5, -8, -5, -2] 
+    n = len(a) 
+  
+    MAX = 1000
+      
+    # Since array is global, it is 
+    # initialized as 0. 
+    has = [[0 for i in range(2)]  
+              for j in range(MAX + 1)] 
+    insert(a, n) 
+  
+    X = -5
+    if search(X) == True: 
+        print("Present") 
+    else: 
+        print("Not Present") 
+        
+        
+OUTPUT
+*********************
+Present
